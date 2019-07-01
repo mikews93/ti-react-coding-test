@@ -1,0 +1,24 @@
+@import '../../globals';
+
+.nav {
+  background-color: $ti-primary-color;
+
+  .nav__item {
+    font-weight: 500;
+
+    &.nav--active,
+    &:hover {
+      background-color: $ti-active-color;
+    }
+    &.nav--active::after {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      border-bottom: 2px solid #d500f9;
+      display: block;
+      bottom: 0%;
+      right: 0%;
+      width: 100%;
+    }
+  }
+}

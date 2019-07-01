@@ -1,0 +1,17 @@
+@import '../../../../_globals';
+
+.sidebar {
+  position: fixed;
+}
+
+.sidebar,
+.sidebar__list {
+  height: $ti-sidebar-height;
+  width: $ti-sidebar-width;
+}
+
+.sidebar__list {
+  .active--item {
+    background-color: $ti-primary-color;
+  }
+}
