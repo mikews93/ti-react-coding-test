@@ -27,7 +27,7 @@ const SideBar = props => {
     props.activeItem ||
       getActiveTabUrl({
         path: props.location.pathname,
-        routes: PRODUCTS_ROUTES
+        routes: { ...PRODUCTS_ROUTES, all: 'all' }
       })
   );
   const showDividerAtPosition = [1];
@@ -36,7 +36,7 @@ const SideBar = props => {
       <List className="sidebar__list md-paper--1">
         <Subheader primaryText="Categories" />
         {CATEGORIES.map(({ linkTo, icon, name }, itemIndex) => (
-          <>
+          <span key={itemIndex}>
             <ListItem
               onClick={() =>
                 handleClick({ itemIndex, linkTo, props, setActiveItem, name })
@@ -50,7 +50,7 @@ const SideBar = props => {
             {showDividerAtPosition.find(d => d - 1 === itemIndex) && (
               <Divider />
             )}
-          </>
+          </span>
         ))}
       </List>
     </div>

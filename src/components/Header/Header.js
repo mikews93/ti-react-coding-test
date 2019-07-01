@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { NAV_TABS, GENERAL_ROUTES } from '../../constants';
 import classnames from 'classnames';
-import './Header.scss';
 import { getActiveTabUrl } from '../../utils';
+import './Header.scss';
 
 export const handleClick = ({
   tabIndex,
@@ -18,7 +18,10 @@ export const handleClick = ({
 const Header = props => {
   const [activeTab, setActiveTab] = useState(
     props.activeTab ||
-      getActiveTabUrl({ path: props.location.pathname, routes: GENERAL_ROUTES })
+      getActiveTabUrl({
+        path: props.location.pathname,
+        routes: { ...GENERAL_ROUTES, home: '/home' }
+      })
   );
   return (
     <header>
