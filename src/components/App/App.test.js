@@ -1,9 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 import App from './App';
+import { makeWrapper } from '../../setupTests';
+import Header from '../Header';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+describe('App', () => {
+  const { wrapper } = makeWrapper({ ReactChild: App });
+
+  it('should render without crashing', () => {
+    expect(wrapper).to.be.present();
+  });
+  it('should render the Header', () => {
+    expect(wrapper.find(Header)).to.be.present();
+  });
 });
