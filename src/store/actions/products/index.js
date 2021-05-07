@@ -11,4 +11,5 @@ const getProducts = param => ({
   }
 });
 
+// eslint-disable-next-line
 export default { getProducts };

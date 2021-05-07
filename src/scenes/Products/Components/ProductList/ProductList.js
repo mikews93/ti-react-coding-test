@@ -21,6 +21,7 @@ const ProductList = ({ location: { state } }) => {
 
   useEffect(() => {
     dispatch(products.getProducts(showAmountOfHiddenP ? state.name : null));
+    // eslint-disable-next-line
   }, []);
 
   return (
