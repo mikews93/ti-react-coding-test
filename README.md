@@ -2,9 +2,9 @@
 
 ## Installation
 
-Please follow this steps in order to install and run this project
+Please follow these steps to install and run this project
 
-1.  Clone this projects and open terminal window
+1.  Clone this project and open a terminal window
     ```
      git clone https://github.com/mikews93/ti-react-coding-test.git
     ```

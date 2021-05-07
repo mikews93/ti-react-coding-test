@@ -44,7 +44,7 @@ const useGlobalState = () => {
         try {
           let { data: result } = await axios({
             url,
-            method: options.metod || 'GET',
+            method: options.method || 'GET',
             ...options
           });
 
