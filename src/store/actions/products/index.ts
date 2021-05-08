@@ -1,13 +1,13 @@
 import { GENERAL_ROUTES } from '../../../constants';
 
-const getProducts = param => ({
+const getProducts = (param:string | null): ReducerAction => ({
   payload: {
     method: 'GET',
     entity: 'products',
     url: `${GENERAL_ROUTES.products}${
       param ? `?categories_like=${param}` : ''
     }`,
-    onSuccess: products => ({ entities: products })
+    onSuccess: (products: Product[]) => ({ entities: products })
   }
 });
 

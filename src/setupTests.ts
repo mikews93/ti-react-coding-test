@@ -9,11 +9,11 @@ enzyme.configure({ adapter: new Adapter() });
 chai.use(chaiEnzyme());
 global.expect = expect;
 
-const makeWrapper = ({ props, ReactChild, withRouter }) => {
-  let wrapper = withRouter
-    ? shallow(<ReactChild.WrappedComponent {...props} />)
-    : shallow(<ReactChild {...props} />);
-  return { wrapper, props };
+const makeWrapper = ({ props, ReactChild, withRouter }: makeWrapperProps) => {
+  // let wrapper = withRouter
+  //   ? shallow(<ReactChild.WrappedComponent {...props} />)
+  //   : shallow(<ReactChild {...props} />);
+  // return { wrapper, props };
 };
 
 export { makeWrapper };

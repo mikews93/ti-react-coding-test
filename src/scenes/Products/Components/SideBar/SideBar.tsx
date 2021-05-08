@@ -1,15 +1,30 @@
-import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
+// @vendors
+import React, { Dispatch, FunctionComponent, useState } from 'react';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 import List from 'react-md/lib/Lists/List';
 import ListItem from 'react-md/lib/Lists/ListItem';
 import Avatar from 'react-md/lib/Avatars/Avatar';
 import Subheader from 'react-md/lib/Subheaders/Subheader';
 import FontIcon from 'react-md/lib/FontIcons/FontIcon';
 import Divider from 'react-md/lib/Dividers/Divider';
-import { CATEGORIES, PRODUCTS_ROUTES } from '../../../../constants';
 import classnames from 'classnames';
-import './SideBar.scss';
+
+import { CATEGORIES, PRODUCTS_ROUTES } from '../../../../constants';
 import { getActiveTabUrl } from '../../../../utils';
+
+import './SideBar.scss';
+
+interface handleClickParams {
+  itemIndex: number,
+  linkTo:string,
+  props: { history?: any },
+  setActiveItem: Dispatch<any>,
+  name: string
+}
+
+interface SideBarProps extends RouteComponentProps {
+  activeItem?: number
+}
 
 export const handleClick = ({
   itemIndex,
@@ -17,12 +32,15 @@ export const handleClick = ({
   props: { history },
   setActiveItem,
   name
-}) => {
+}: handleClickParams) => {
   setActiveItem(itemIndex);
   history.push({ pathname: linkTo, state: { name } });
 };
 
-const SideBar = props => {
+const SideBar: FunctionComponent<SideBarProps> = props => {
+  /**
+   * State
+   */
   const [activeItem, setActiveItem] = useState(
     props.activeItem ||
       getActiveTabUrl({
@@ -31,6 +49,7 @@ const SideBar = props => {
       })
   );
   const showDividerAtPosition = [1];
+
   return (
     <div className="sidebar">
       <List className="sidebar__list md-paper--1">

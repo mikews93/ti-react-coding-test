@@ -1,13 +1,13 @@
-export const REQUEST_STATUSES = {
-  NOT_FETCHED: 'notFetched',
-  FETCHING: 'fetching',
-  SUCCESSFUL: 'successful',
-  FAILED: 'failed'
+export enum REQUEST_STATUSES {
+  NOT_FETCHED = 'notFetched',
+  FETCHING = 'fetching',
+  SUCCESSFUL = 'successful',
+  FAILED = 'failed'
 };
 
-export const STATE_ACTIONS = {
-  SET_STATE: 'setState',
-  FETCH_ENTITY: 'fetchEntity'
+export enum STATE_ACTIONS {
+  SET_STATE = 'setState',
+  FETCH_ENTITY = 'fetchEntity'
 };
 
 export const GENERAL_ROUTES = {

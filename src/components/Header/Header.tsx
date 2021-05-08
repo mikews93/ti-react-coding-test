@@ -1,21 +1,28 @@
-import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
-import { NAV_TABS, GENERAL_ROUTES } from '../../constants';
+// @vendors
+import React, { Dispatch, FunctionComponent, useState } from 'react';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 import classnames from 'classnames';
+
+import { NAV_TABS, GENERAL_ROUTES } from '../../constants';
 import { getActiveTabUrl } from '../../utils';
+
 import './Header.scss';
 
-export const handleClick = ({
-  tabIndex,
-  linkTo,
-  props: { history },
-  setActiveTab
-}) => {
-  setActiveTab(tabIndex);
-  history.push(linkTo);
-};
+interface handleClickParams {
+  tabIndex: number,
+  linkTo:string,
+  props: { history?: any },
+  setActiveTab: Dispatch<any>
+}
 
-const Header = props => {
+interface HeaderProps extends RouteComponentProps {
+  activeTab?: number
+}
+
+const Header: FunctionComponent<HeaderProps> = props => {
+  /**
+   * State
+   */
   const [activeTab, setActiveTab] = useState(
     props.activeTab ||
       getActiveTabUrl({
@@ -23,6 +30,20 @@ const Header = props => {
         routes: { ...GENERAL_ROUTES, home: '/home' }
       })
   );
+
+  /**
+   * Callbacks
+   */
+  const handleClick = ({
+    tabIndex,
+    linkTo,
+    props: { history },
+    setActiveTab
+  }: handleClickParams) => {
+    setActiveTab(tabIndex);
+    history.push(linkTo);
+  };
+
   return (
     <header>
       <ul className="md-tabs md-tabs--centered nav">
@@ -42,7 +63,7 @@ const Header = props => {
               })
             }
           >
-            <div className="md-tab-label" bis_skin_checked="1">
+            <div className="md-tab-label">
               {title}
             </div>
           </li>

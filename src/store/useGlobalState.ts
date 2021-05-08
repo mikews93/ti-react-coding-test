@@ -1,29 +1,29 @@
+// @vendors
 import { useState, createContext } from 'react';
 import axios from 'axios';
-import { REQUEST_STATUSES, STATE_ACTIONS } from '../constants';
 import isEmpty from 'lodash/isEmpty';
-
-const { FETCHING, SUCCESSFUL, FAILED } = REQUEST_STATUSES;
-const { FETCH_ENTITY, SET_STATE } = STATE_ACTIONS;
+import { REQUEST_STATUSES, STATE_ACTIONS } from '../constants';
 
 //set defaults
 axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL;
 
-export const GlobalContext = createContext({});
 
-const useGlobalState = () => {
-  const [state, setState] = useState({});
+/**
+ * Custom hook
+ */
+const useGlobalState = (): [global: GlobalState, reducer: GlobalStateReducer] => {
+  const [state, setState] = useState<GlobalState>({});
 
-  const reducer = async ({ type = FETCH_ENTITY, payload = {}, entityName }) => {
+  const reducer: GlobalStateReducer = async ({ type = STATE_ACTIONS.FETCH_ENTITY, payload = {}, entityName }: ReducerAction) => {
     switch (type) {
-      case SET_STATE:
+      case STATE_ACTIONS.SET_STATE:
         if (entityName)
           return setState({
             ...state,
             [entityName]: { ...state[entityName], ...payload }
           });
         else throw TypeError(`property entityName must be specified`);
-      case FETCH_ENTITY:
+      case STATE_ACTIONS.FETCH_ENTITY:
         const {
           url = '/',
           entity,
@@ -36,7 +36,7 @@ const useGlobalState = () => {
         setState({
           ...state,
           [entity]: {
-            requestStatus: FETCHING,
+            requestStatus: REQUEST_STATUSES.FETCHING,
             [entity]: initialState
           }
         });
@@ -56,7 +56,7 @@ const useGlobalState = () => {
 
           return setState({
             ...state,
-            [entity]: { requestStatus: SUCCESSFUL, ...result }
+            [entity]: { requestStatus: REQUEST_STATUSES.SUCCESSFUL, ...result }
           });
         } catch (error) {
           let Error = error;
@@ -69,7 +69,7 @@ const useGlobalState = () => {
           return setState({
             ...state,
             [entity]: {
-              requestStatus: FAILED,
+              requestStatus: REQUEST_STATUSES.FAILED,
               [entity]: initialState,
               error: Error ? Error : `${error}`
             }
@@ -83,5 +83,13 @@ const useGlobalState = () => {
 
   return [state, reducer];
 };
+
+/**
+ * Global context
+ */
+const initialGlobalState: GlobalState = {}
+const initialStateReducer: GlobalStateReducer = async (param: ReducerAction) => {}
+export const GlobalContext = createContext<[global: GlobalState, reducer: GlobalStateReducer]>([initialGlobalState, initialStateReducer]);
+
 
 export default useGlobalState;

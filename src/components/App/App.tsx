@@ -1,7 +1,9 @@
-import React, { lazy, Suspense } from 'react';
+// @vendors
+import React, { FunctionComponent, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { GENERAL_ROUTES } from '../../constants';
 import LinearProgress from 'react-md/lib/Progress/LinearProgress';
+
+import { GENERAL_ROUTES } from '../../constants';
 import Header from '../Header';
 
 const Home = lazy(() => import('../../scenes/Home'));
@@ -9,7 +11,7 @@ const Products = lazy(() => import('../../scenes/Products'));
 const Clients = lazy(() => import('../../scenes/Clients'));
 const Contact = lazy(() => import('../../scenes/Contact'));
 
-function App() {
+const App: FunctionComponent = () => {
   return (
     <>
       <Router>

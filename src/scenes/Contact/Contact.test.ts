@@ -4,11 +4,11 @@ import { makeWrapper } from '../../setupTests';
 describe('Contact', () => {
   const { wrapper } = makeWrapper({ ReactChild: Contact });
   it('should render without crashing ', () => {
-    expect(wrapper).to.be.present();
+    expect(wrapper).toBeCalled();
   });
 
   it('should an h1 tag', () => {
     const H1 = wrapper.find('h1');
-    expect(H1).to.be.present();
+    expect(H1).toBeCalled();
   });
 });

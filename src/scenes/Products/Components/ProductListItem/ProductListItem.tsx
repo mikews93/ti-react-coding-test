@@ -1,12 +1,18 @@
-import React from 'react';
+// @vendors
+import React, { FunctionComponent } from 'react';
+
 import './ProductListItem.scss';
 
-const ProductListItem = ({ product }) => {
+interface ProductListItemProps {
+  product: Product
+}
+
+const ProductListItem: FunctionComponent<ProductListItemProps> = ({ product }) => {
   return (
     <div className="product-list-item md-paper--1">
       <h2 className="tittle"> {product.name}</h2>
       <h4 className="sub-tittle">
-        {product.categories.toString(', ')} - {product.brand}
+        {product.categories.toString()} - {product.brand}
       </h4>
       <div className="product__description">
         <div className="section section--sm">
