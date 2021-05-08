@@ -21,7 +21,7 @@
     "evercheck-utils": "^0.1.3",
     "json-server": "^0.15.0",
     "lodash": "^4.17.11",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "npm-run-all": "^4.1.5",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
