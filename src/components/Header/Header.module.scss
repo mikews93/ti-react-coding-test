@@ -3,14 +3,14 @@
 .nav {
   background-color: $ti-primary-color;
 
-  .nav__item {
+  .navItem {
     font-weight: 500;
 
-    &.nav--active,
+    &.navActive,
     &:hover {
       background-color: $ti-active-color;
     }
-    &.nav--active::after {
+    &.navActive::after {
       content: '';
       position: absolute;
       z-index: 1;

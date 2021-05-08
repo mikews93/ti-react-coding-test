@@ -51,8 +51,8 @@ const Header: FunctionComponent<HeaderProps> = props => {
           <li
             key={tabIndex}
             className={classnames(
-              `md-fake-btn md-pointer--hover md-fake-btn--no-outline md-tab ${styles.nav__item}`,
-              { [styles['nav--active']]: activeTab === tabIndex }
+              `md-fake-btn md-pointer--hover md-fake-btn--no-outline md-tab ${styles.navItem}`,
+              { [styles.navActive]: activeTab === tabIndex }
             )}
             onClick={() =>
               handleClick({
