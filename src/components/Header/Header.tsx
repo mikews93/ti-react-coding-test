@@ -1,5 +1,5 @@
 // @vendors
-import React, { Dispatch, FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import classnames from 'classnames';
 
@@ -10,9 +10,7 @@ import styles from './Header.module.scss';
 
 interface handleClickParams {
   tabIndex: number,
-  linkTo:string,
-  props: { history?: any },
-  setActiveTab: Dispatch<any>
+  linkTo:string
 }
 
 interface HeaderProps extends RouteComponentProps {
@@ -36,12 +34,10 @@ const Header: FunctionComponent<HeaderProps> = props => {
    */
   const handleClick = ({
     tabIndex,
-    linkTo,
-    props: { history },
-    setActiveTab
+    linkTo
   }: handleClickParams) => {
     setActiveTab(tabIndex);
-    history.push(linkTo);
+    props.history.push(linkTo);
   };
 
   return (
@@ -55,12 +51,7 @@ const Header: FunctionComponent<HeaderProps> = props => {
               { [styles.navActive]: activeTab === tabIndex }
             )}
             onClick={() =>
-              handleClick({
-                tabIndex,
-                linkTo,
-                props,
-                setActiveTab
-              })
+              handleClick({ tabIndex, linkTo })
             }
           >
             <div className="md-tab-label">

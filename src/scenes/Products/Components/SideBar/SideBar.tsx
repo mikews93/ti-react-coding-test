@@ -1,5 +1,5 @@
 // @vendors
-import React, { Dispatch, FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import List from 'react-md/lib/Lists/List';
 import ListItem from 'react-md/lib/Lists/ListItem';
@@ -17,25 +17,12 @@ import styles from './SideBar.module.scss';
 interface handleClickParams {
   itemIndex: number,
   linkTo:string,
-  props: { history?: any },
-  setActiveItem: Dispatch<any>,
   name: string
 }
 
 interface SideBarProps extends RouteComponentProps {
   activeItem?: number
 }
-
-export const handleClick = ({
-  itemIndex,
-  linkTo,
-  props: { history },
-  setActiveItem,
-  name
-}: handleClickParams) => {
-  setActiveItem(itemIndex);
-  history.push({ pathname: linkTo, state: { name } });
-};
 
 const SideBar: FunctionComponent<SideBarProps> = props => {
   /**
@@ -48,6 +35,20 @@ const SideBar: FunctionComponent<SideBarProps> = props => {
         routes: { ...PRODUCTS_ROUTES, all: 'all' }
       })
   );
+
+  /**
+   * Callbacks
+   */
+  const handleClick = ({
+    itemIndex,
+    linkTo,
+    name
+  }: handleClickParams) => {
+    setActiveItem(itemIndex);
+    props.history.push({ pathname: linkTo, state: { name } });
+  };
+
+
   const showDividerAtPosition = [1];
 
   return (
@@ -58,7 +59,7 @@ const SideBar: FunctionComponent<SideBarProps> = props => {
           <span key={itemIndex}>
             <ListItem
               onClick={() =>
-                handleClick({ itemIndex, linkTo, props, setActiveItem, name })
+                handleClick({ itemIndex, linkTo, name })
               }
               leftAvatar={<Avatar icon={<FontIcon>{icon}</FontIcon>} />}
               primaryText={name}
