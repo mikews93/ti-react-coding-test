@@ -1,7 +1,7 @@
 @import '../../../../globals';
 $ti-product-list-width: 100vw - $ti-sidebar-width;
 
-.product-list {
+.productList {
   position: fixed;
   right: 0;
   width: $ti-product-list-width;

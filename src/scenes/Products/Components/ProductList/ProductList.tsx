@@ -8,7 +8,7 @@ import { CATEGORY_NAMES, REQUEST_STATUSES } from '../../../../constants';
 import { GlobalContext, products } from '../../../../store';
 import { isFetching } from '../../../../utils';
 
-import './ProductList.scss';
+import styles from './ProductList.module.scss';
 
 interface LocationImp extends Location {
   state: {
@@ -43,7 +43,7 @@ const ProductList: FunctionComponent<ProductListProps> = ({ location: { state } 
   }, []);
 
   return (
-    <div className="product-list">
+    <div className={styles.productList}>
       {showLoader ? (
         <CircularProgress id="circular" />
       ) : (

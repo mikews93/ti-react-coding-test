@@ -5,13 +5,13 @@
 }
 
 .sidebar,
-.sidebar__list {
+.sidebarList {
   height: $ti-sidebar-height;
   width: $ti-sidebar-width;
 }
 
-.sidebar__list {
-  .active--item {
+.sidebarList {
+  .activeItem {
     background-color: $ti-primary-color;
   }
 }

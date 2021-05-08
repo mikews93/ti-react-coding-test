@@ -1,28 +1,28 @@
 // @vendors
 import React, { FunctionComponent } from 'react';
 
-import './ProductListItem.scss';
+import styles from './ProductListItem.module.scss';
 
 interface ProductListItemProps {
   product: Product
 }
 
-const ProductListItem: FunctionComponent<ProductListItemProps> = ({ product }) => {
-  return (
-    <div className="product-list-item md-paper--1">
-      <h2 className="tittle"> {product.name}</h2>
-      <h4 className="sub-tittle">
+const ProductListItem: FunctionComponent<ProductListItemProps> = ({ product }) =>
+  (
+    <div className={`${styles.productListItem} md-paper--1`}>
+      <h2 className={styles.tittle}> {product.name}</h2>
+      <h4 className={styles.subTittle}>
         {product.categories.toString()} - {product.brand}
       </h4>
-      <div className="product__description">
-        <div className="section section--sm">
+      <div className={styles.productDescription}>
+        <div className={`${styles.section} ${styles.sectionSm}`}>
           <img
             src={product.photo}
             alt={product.name}
-            className="section__photo"
+            className={styles.sectionPhoto}
           />
         </div>
-        <div className="section section--lg">
+        <div className={`${styles.section} ${styles.sectionLg}`}>
           <p>{product.description}</p>
           <b>Stock: </b> {product.stock}
           <br />
@@ -31,6 +31,5 @@ const ProductListItem: FunctionComponent<ProductListItemProps> = ({ product }) =
       </div>
     </div>
   );
-};
 
 export default ProductListItem;

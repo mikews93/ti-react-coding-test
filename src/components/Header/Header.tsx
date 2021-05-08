@@ -6,7 +6,7 @@ import classnames from 'classnames';
 import { NAV_TABS, GENERAL_ROUTES } from '../../constants';
 import { getActiveTabUrl } from '../../utils';
 
-import './Header.scss';
+import styles from './Header.module.scss';
 
 interface handleClickParams {
   tabIndex: number,
@@ -46,13 +46,13 @@ const Header: FunctionComponent<HeaderProps> = props => {
 
   return (
     <header>
-      <ul className="md-tabs md-tabs--centered nav">
+      <ul className={`md-tabs md-tabs--centered ${styles.nav}`}>
         {NAV_TABS.map(({ title, linkTo }, tabIndex) => (
           <li
             key={tabIndex}
             className={classnames(
-              'md-fake-btn md-pointer--hover md-fake-btn--no-outline md-tab nav__item',
-              { 'nav--active': activeTab === tabIndex }
+              `md-fake-btn md-pointer--hover md-fake-btn--no-outline md-tab ${styles.nav__item}`,
+              { [styles['nav--active']]: activeTab === tabIndex }
             )}
             onClick={() =>
               handleClick({

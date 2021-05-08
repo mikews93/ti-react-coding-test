@@ -1,6 +1,6 @@
 @import '../../../../globals';
 
-.product-list-item {
+.productListItem {
   background-color: white;
   margin: 10px 0;
   padding: 30px 15px;
@@ -9,27 +9,27 @@
     margin: 0;
   }
 
-  .sub-tittle {
+  .subTittle {
     color: rgb(149, 149, 149);
     font-weight: 500;
   }
 
-  .product__description {
+  .productDescription {
     margin-top: 30px;
     display: flex;
 
     .section {
       margin: 0 40px 0 80px;
 
-      .section__photo {
+      .sectionPhoto {
         width: 90px;
         height: 90px;
       }
 
-      .section--sm {
+      .sectionSm {
         width: 140px;
       }
-      .section--lg {
+      .sectionLg {
         width: fit-content;
       }
     }

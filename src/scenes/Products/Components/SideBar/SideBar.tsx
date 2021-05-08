@@ -12,7 +12,7 @@ import classnames from 'classnames';
 import { CATEGORIES, PRODUCTS_ROUTES } from '../../../../constants';
 import { getActiveTabUrl } from '../../../../utils';
 
-import './SideBar.scss';
+import styles from './SideBar.module.scss';
 
 interface handleClickParams {
   itemIndex: number,
@@ -51,8 +51,8 @@ const SideBar: FunctionComponent<SideBarProps> = props => {
   const showDividerAtPosition = [1];
 
   return (
-    <div className="sidebar">
-      <List className="sidebar__list md-paper--1">
+    <div className={styles.sidebar}>
+      <List className={`${styles.sidebarList} md-paper--1`}>
         <Subheader primaryText="Categories" />
         {CATEGORIES.map(({ linkTo, icon, name }, itemIndex) => (
           <span key={itemIndex}>
@@ -63,7 +63,7 @@ const SideBar: FunctionComponent<SideBarProps> = props => {
               leftAvatar={<Avatar icon={<FontIcon>{icon}</FontIcon>} />}
               primaryText={name}
               className={classnames('list__item', {
-                'active--item': activeItem === itemIndex
+                [styles.activeItem]: activeItem === itemIndex
               })}
             />
             {showDividerAtPosition.find(d => d - 1 === itemIndex) && (
