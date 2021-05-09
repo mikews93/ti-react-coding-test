@@ -89,14 +89,14 @@ const ProductList: FunctionComponent<ProductListProps> = ({ location: { state } 
               <FontIcon>grid_view</FontIcon>
             </Button>
           </div>
-          <label>
+          <div className={styles.productCounter}>
             Showing <b>{amountProductsShown}</b> products
             {showAmountOfHiddenP && (
               <label>
                 - Hidden <b>{hiddenProducts}</b>
               </label>
             )}
-          </label>
+          </div>
           <div className={classnames(styles.productsLayout, { [styles.blockLayout]: !toggleListView })}>
             {productList?.map((product: Product, index: number) =>
               <ProductItem key={index} product={product} renderList={toggleListView}/>

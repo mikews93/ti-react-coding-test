@@ -10,7 +10,7 @@ import Divider from 'react-md/lib/Dividers/Divider';
 import classnames from 'classnames';
 
 import { CATEGORIES, PRODUCTS_ROUTES } from '../../../../constants';
-import { getActiveTabUrl } from '../../../../utils';
+import { getActiveTabUrl, setLocalStorage } from '../../../../utils';
 
 import styles from './SideBar.module.scss';
 
@@ -23,6 +23,8 @@ interface handleClickParams {
 interface SideBarProps extends RouteComponentProps {
   activeItem?: number
 }
+
+export const productLocalStorageKey = 'productActiveTab';
 
 const SideBar: FunctionComponent<SideBarProps> = props => {
   /**
@@ -46,6 +48,7 @@ const SideBar: FunctionComponent<SideBarProps> = props => {
   }: handleClickParams) => {
     setActiveItem(itemIndex);
     props.history.push({ pathname: linkTo, state: { name } });
+    setLocalStorage({ key: productLocalStorageKey, value: { linkTo, itemIndex }})
   };
 
 

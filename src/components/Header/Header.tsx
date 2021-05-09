@@ -4,7 +4,7 @@ import { RouteComponentProps, withRouter } from 'react-router-dom';
 import classnames from 'classnames';
 
 import { NAV_TABS, GENERAL_ROUTES } from '../../constants';
-import { getActiveTabUrl } from '../../utils';
+import { getActiveTabUrl, getLocalStorage } from '../../utils';
 
 import styles from './Header.module.scss';
 
@@ -37,7 +37,12 @@ const Header: FunctionComponent<HeaderProps> = props => {
     linkTo
   }: handleClickParams) => {
     setActiveTab(tabIndex);
-    props.history.push(linkTo);
+    const productActiveTab = getLocalStorage('productActiveTab');
+    if (productActiveTab && tabIndex === 1) {
+      props.history.push(productActiveTab.linkTo);
+    } else {
+      props.history.push(linkTo);
+    }
   };
 
   return (
