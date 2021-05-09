@@ -1,0 +1,41 @@
+@import '../../../../globals';
+
+.productItem {
+  background-color: white;
+  padding: 30px 15px;
+  max-height: 300px;
+
+  .tittle {
+    margin: 0;
+  }
+
+  .subTittle {
+    color: rgb(149, 149, 149);
+    font-weight: 500;
+  }
+
+  .productDescription {
+    margin-top: 30px;
+    display: flex;
+
+    .sectionBlock{
+      margin: 0 5px !important;
+    }
+
+    .section {
+      margin: 0 40px 0 80px;
+
+      .sectionPhoto {
+        width: 90px;
+        height: 90px;
+      }
+
+      .sectionSm {
+        width: 140px;
+      }
+      .sectionLg {
+        width: fit-content;
+      }
+    }
+  }
+}

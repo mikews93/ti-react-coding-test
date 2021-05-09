@@ -7,7 +7,7 @@ export enum REQUEST_STATUSES {
 
 export enum STATE_ACTIONS {
   SET_STATE = 'setState',
-  FETCH_ENTITY = 'fetchEntity'
+  MAKE_REQUEST = 'makeRequest'
 };
 
 export const GENERAL_ROUTES = {

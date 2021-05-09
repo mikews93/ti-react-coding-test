@@ -48,7 +48,7 @@ export const isFetching = (fetchStatus?: REQUEST_STATUSES) => {
 export const getLocalStorage = (key: string) => {
   const content = localStorage.getItem(key);
   if (!content) {
-    return console.error(`value found on local storage for ${key}`)
+    return console.info(`value for key ${key} not found on local storage`)
   }
   return JSON.parse(content);
 }
@@ -59,4 +59,38 @@ export const getLocalStorage = (key: string) => {
  */
 export const setLocalStorage = ({key, value}: { key: string, value: any}) => {
   localStorage.setItem(key, JSON.stringify(value));
+}
+
+/**
+ * removes a key from local storage
+ * @param {string} key key to delete on local storage
+ */
+export const deleteLocalStorageKey = (key: string) => {
+  localStorage.removeItem(key);
+}
+
+/**
+ * creates a dictionary from array of objects
+ * @param {Array} array array to be transformed
+ * @param {string} keyUsed string key name inside object to use as id for dictionary
+ */
+export function transformArrayToDictionary<T>(array: T[], keyUsed: keyof T): { [key: string]: T };
+
+export function transformArrayToDictionary<T, ValueTransformed>(
+  array: T[],
+  keyUsed: keyof T,
+  map: (arrayValue: T) => ValueTransformed
+): { [key: string]: ValueTransformed };
+
+export function transformArrayToDictionary<T, ValueTransformed>(
+  array: T[],
+  keyUsed: keyof T,
+  map?: (arrayValue: T) => ValueTransformed
+): { [key: string]: T } {
+  return array.reduce((acc: any, current: T) => {
+    const key = `${current[keyUsed]}`.toString();
+    acc[key] = map ? map(current) : current;
+
+    return acc;
+  }, {});
 }

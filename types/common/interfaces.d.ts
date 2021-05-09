@@ -4,30 +4,46 @@ interface makeWrapperProps {
   withRouter
 }
 
+type Method =
+  | 'get' | 'GET'
+  | 'delete' | 'DELETE'
+  | 'head' | 'HEAD'
+  | 'options' | 'OPTIONS'
+  | 'post' | 'POST'
+  | 'put' | 'PUT'
+  | 'patch' | 'PATCH'
+  | 'purge' | 'PURGE'
+  | 'link' | 'LINK'
+  | 'unlink' | 'UNLINK'
+
+interface payload {
+  url?: string;
+  entity?: any
+  method?: Method
+  initialState?: any
+  onSuccess?: (result: any) => any
+  onError?: (error: Error) => any
+  data?: any
+}
+
 interface ReducerAction {
   type?: STATE_ACTIONS
-  payload?: {
-    url?: string
-    entity?: any
-    initialState?: any
-    onSuccess?: (result: any) => any
-    onError?: (error: Error) => any
-    method?: 'head' | 'GET' | 'get' | 'delete' | 'DELETE' | 'HEAD' | 'options' | 'OPTIONS' | 'post' | 'POST' | 'put' | 'PUT' | 'patch' | 'PATCH' | undefined
-  }
+  payload?: payload
   entityName?: keyof GlobalState
 }
 
-
-// * business logic
-
-interface GlobalState {
-  products?: {
-    entities?: Product[],
-    requestStatus?: REQUEST_STATUSES
-    error?: Error
-  }
+interface stateEntity {
+  entities?: Product[],
+  requestStatus?: REQUEST_STATUSES
+  error?: Error
 }
 
+interface GlobalState {
+  products?: stateEntity,
+  contact?: stateEntity
+}
+
+// * business logic
 interface Product {
   id: string
   name: string
@@ -37,4 +53,11 @@ interface Product {
   stock: number,
   photo: string
   categories: string[]
+}
+
+interface Contact {
+  firstName: string
+  lastName: string
+  email: string
+  subject: string
 }

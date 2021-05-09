@@ -8,7 +8,7 @@ import classnames from 'classnames';
 
 import ProductItem from '../ProductItem';
 import { CATEGORY_NAMES, REQUEST_STATUSES } from '../../../../constants';
-import { GlobalContext, products } from '../../../../store';
+import { GlobalContext, productsActions } from '../../../../store';
 import { getLocalStorage, isFetching, setLocalStorage } from '../../../../utils';
 
 import styles from './ProductList.module.scss';
@@ -48,7 +48,7 @@ const ProductList: FunctionComponent<ProductListProps> = ({ location: { state } 
   const showLoader = isFetching(requestStatus);
 
   useEffect(() => {
-    dispatch(products.getProducts(showAmountOfHiddenP ? state?.name : null));
+    dispatch(productsActions.getProducts(showAmountOfHiddenP ? state?.name : null));
     // eslint-disable-next-line
   }, []);
 

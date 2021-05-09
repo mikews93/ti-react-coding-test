@@ -1,0 +1,38 @@
+@import '../../../../globals';
+
+.contactForm {
+  background: white;
+  padding: 10px 60px 10px 30px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: max-content;
+  border: 1px solid rgb(194,194,194);
+  width: 40vw;
+
+  .field {
+    margin: 10px;
+  }
+
+  .submitSection {
+    display: flex;
+    justify-content: flex-end;
+
+    .submitBtn {
+      background: rgb(175,175,175);
+      color: #231F1C;
+      display: flex;
+
+      svg {
+        margin: -5px 0 0 10px;
+      }
+    }
+
+    .submitBtnDisabled {
+      cursor: not-allowed;
+      background: rgb(238, 238, 238);
+    }
+  }
+
+}

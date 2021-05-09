@@ -7,14 +7,22 @@ import { REQUEST_STATUSES, STATE_ACTIONS } from '../constants';
 //set defaults
 axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL;
 
-
 /**
  * Custom hook
  */
 const useGlobalState = (): [global: GlobalState, reducer: GlobalStateReducer] => {
   const [state, setState] = useState<GlobalState>({});
 
-  const reducer: GlobalStateReducer = async ({ type = STATE_ACTIONS.FETCH_ENTITY, payload = {}, entityName }: ReducerAction) => {
+  const reducer: GlobalStateReducer = async ({ type = STATE_ACTIONS.MAKE_REQUEST, payload = {}, entityName }: ReducerAction) => {
+    const {
+      url = '/',
+      entity,
+      initialState = {},
+      onSuccess,
+      onError,
+      ...options
+    } = payload;
+
     switch (type) {
       case STATE_ACTIONS.SET_STATE:
         if (entityName)
@@ -23,16 +31,7 @@ const useGlobalState = (): [global: GlobalState, reducer: GlobalStateReducer] =>
             [entityName]: { ...state[entityName], ...payload }
           });
         else throw TypeError(`property entityName must be specified`);
-      case STATE_ACTIONS.FETCH_ENTITY:
-        const {
-          url = '/',
-          entity,
-          initialState = {},
-          onSuccess,
-          onError,
-          ...options
-        } = payload;
-
+      case STATE_ACTIONS.MAKE_REQUEST:
         setState({
           ...state,
           [entity]: {
@@ -75,7 +74,6 @@ const useGlobalState = (): [global: GlobalState, reducer: GlobalStateReducer] =>
             }
           });
         }
-
       default:
         return state;
     }
