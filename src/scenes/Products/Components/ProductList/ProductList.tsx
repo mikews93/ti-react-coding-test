@@ -1,12 +1,15 @@
 // @vendors
-import React, { useEffect, useContext, FunctionComponent } from 'react';
+import React, { useEffect, useContext, FunctionComponent, useState } from 'react';
 import CircularProgress from 'react-md/lib/Progress/CircularProgress';
 import { RouteComponentProps } from 'react-router-dom';
+import Button from 'react-md/lib/Buttons/Button';
+import FontIcon from 'react-md/lib/FontIcons/FontIcon';
+import classnames from 'classnames';
 
-import ProductListItem from '../ProductListItem';
+import ProductItem from '../ProductItem';
 import { CATEGORY_NAMES, REQUEST_STATUSES } from '../../../../constants';
 import { GlobalContext, products } from '../../../../store';
-import { isFetching } from '../../../../utils';
+import { getLocalStorage, isFetching, setLocalStorage } from '../../../../utils';
 
 import styles from './ProductList.module.scss';
 
@@ -20,11 +23,18 @@ interface ProductListProps extends RouteComponentProps {
   location: LocationImp
 }
 
+const localStorageKey = 'viewMode';
+
 const ProductList: FunctionComponent<ProductListProps> = ({ location: { state } }) => {
   /**
    * Context
    */
   const [globalState, dispatch] = useContext(GlobalContext);
+
+  /**
+   * state
+   */
+  const [toggleListView, setToggleListView] = useState(getLocalStorage(localStorageKey).toggleList)
 
   /**
    * Initial values
@@ -42,12 +52,43 @@ const ProductList: FunctionComponent<ProductListProps> = ({ location: { state } 
     // eslint-disable-next-line
   }, []);
 
+  const handleClickToggleView = (toggleList: boolean) => {
+    setToggleListView(toggleList);
+    setLocalStorage({key: localStorageKey, value: { toggleList }})
+  }
+
   return (
     <div className={styles.productList}>
       {showLoader ? (
         <CircularProgress id="circular" />
       ) : (
         <>
+          <div className={styles.toggleListViewLayout}>
+            <Button
+              id="toggleList"
+              icon
+              tooltipLabel="Change to list view"
+              tooltipPosition="right"
+              className={classnames({
+                [styles.active]: toggleListView
+              })}
+              onClick={() => handleClickToggleView(true)}
+            >
+              <FontIcon>list</FontIcon>
+            </Button>
+            <Button
+              id="toggleBlock"
+              icon
+              tooltipLabel="Change to blocks view"
+              className={classnames({
+                [styles.active]: !toggleListView
+              })}
+              tooltipPosition="right"
+              onClick={() => handleClickToggleView(false)}
+            >
+              <FontIcon>grid_view</FontIcon>
+            </Button>
+          </div>
           <label>
             Showing <b>{amountProductsShown}</b> products
             {showAmountOfHiddenP && (
@@ -56,11 +97,11 @@ const ProductList: FunctionComponent<ProductListProps> = ({ location: { state } 
               </label>
             )}
           </label>
-
-          {productList &&
-            productList.map((product: Product, index: number) => (
-              <ProductListItem key={index} product={product} />
-            ))}
+          <div className={classnames(styles.productsLayout, { [styles.blockLayout]: !toggleListView })}>
+            {productList?.map((product: Product, index: number) =>
+              <ProductItem key={index} product={product} renderList={toggleListView}/>
+            )}
+          </div>
         </>
       )}
     </div>

@@ -1,5 +1,6 @@
 @import '../../../../globals';
 $ti-product-list-width: 100vw - $ti-sidebar-width;
+$ti-toggle-active-color: rgb(0, 0, 0);
 
 .productList {
   position: fixed;
@@ -8,4 +9,24 @@ $ti-product-list-width: 100vw - $ti-sidebar-width;
   overflow-y: auto;
   height: $ti-sidebar-height;
   padding: 15px;
+
+  .toggleListViewLayout{
+    display: flex;
+    justify-content: space-between;
+    width: 70px;
+
+    .active i{
+      color: $ti-toggle-active-color;
+    }
+  }
+
+  .productsLayout {
+    display: grid;
+    grid-auto-rows: auto;
+    grid-gap: 1rem;
+  }
+
+  .blockLayout {
+    grid-template-columns: repeat(auto-fill, 440px);
+  }
 }

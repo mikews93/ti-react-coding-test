@@ -1,9 +1,9 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "TI Code challenge",
+  "name": "Code challenge",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "favicon-01.svg",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     }

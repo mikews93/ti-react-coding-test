@@ -40,3 +40,23 @@ export const isFetching = (fetchStatus?: REQUEST_STATUSES) => {
   }
   return false;
 };
+
+/**
+ * returns the value of a key in the local storage
+ * @param key {string} name of key on local storage
+ */
+export const getLocalStorage = (key: string) => {
+  const content = localStorage.getItem(key);
+  if (!content) {
+    return console.error(`value found on local storage for ${key}`)
+  }
+  return JSON.parse(content);
+}
+
+/**
+ * Sets items to local storage
+ * @param {Object} arguments { [string]key, [string] value}
+ */
+export const setLocalStorage = ({key, value}: { key: string, value: any}) => {
+  localStorage.setItem(key, JSON.stringify(value));
+}
