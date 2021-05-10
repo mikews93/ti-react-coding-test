@@ -1,6 +1,7 @@
 // @vendors
 import React, { FunctionComponent, useState } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
+//@ts-ignore
 import classnames from 'classnames';
 
 import { NAV_TABS, GENERAL_ROUTES } from '../../constants';

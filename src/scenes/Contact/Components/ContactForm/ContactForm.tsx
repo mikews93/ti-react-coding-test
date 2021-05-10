@@ -5,12 +5,14 @@ import TextField from 'react-md/lib/TextFields/TextField';
 import Button from 'react-md/lib/Buttons/Button';
 import classnames from 'classnames';
 import omit from 'lodash/omit'
+import { toast, ToastContainer } from 'react-toastify';
 
 import { fieldsConfig , FieldConfig, validEmailRegExp} from './constants'
 import { deleteLocalStorageKey, getLocalStorage, isFetching, setLocalStorage, transformArrayToDictionary } from '../../../../utils';
 import { GlobalContext, contactActions } from '../../../../store';
 
 import styles from './ContactForm.module.scss';
+import 'react-toastify/dist/ReactToastify.css';
 import { REQUEST_STATUSES } from '../../../../constants';
 
 const LocalStorageKey = 'contactForm';
@@ -32,7 +34,9 @@ export const ContactForm: FunctionComponent = () => {
   useEffect(() => {
     setIsLoading(isFetching(contactState?.requestStatus))
     if (contactState?.requestStatus === REQUEST_STATUSES.SUCCESSFUL) {
+      setTextFieldsConfig(fieldsConfig);
       deleteLocalStorageKey(LocalStorageKey);
+      toast.success('your information was saved, we will contact you soon', { position: toast.POSITION.TOP_CENTER });
     }
   }, [contactState?.requestStatus])
 
@@ -79,6 +83,7 @@ export const ContactForm: FunctionComponent = () => {
 
   return (
     <div className={styles.contactForm}>
+      <ToastContainer />
       {textFieldsConfig.map((textFieldProps, key) => {
         const { fieldType, ...field } = omit(textFieldProps, ['touched', 'errorMessage', 'alternativeErrorMessage']);
         // * prevent console error, change from uncontrolled to controlled

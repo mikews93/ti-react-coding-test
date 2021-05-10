@@ -1,4 +1,10 @@
 {
+  "contact": {
+    "firstName": "test",
+    "lastName": "test",
+    "email": "test@test.com",
+    "subject": "test"
+  },
   "products": [
     {
       "id": "aeed54ce-36d8-42f6-8055-4c648c3bd4a1",
@@ -8,7 +14,10 @@
       "brand": "Hirthe - Pacocha",
       "stock": 47905,
       "photo": "http://lorempixel.com/640/480/nature",
-      "categories": ["Tech", "Services"]
+      "categories": [
+        "Tech",
+        "Services"
+      ]
     },
     {
       "id": "2ad52ed8-77d7-4072-ad86-42b1c3517c66",
@@ -18,7 +27,10 @@
       "brand": "Hane LLC",
       "stock": 56717,
       "photo": "http://lorempixel.com/640/480/people",
-      "categories": ["Tech", "Office"]
+      "categories": [
+        "Tech",
+        "Office"
+      ]
     },
     {
       "id": "963ba34a-c92b-4f8b-93dc-312a74312dc4",
@@ -28,7 +40,9 @@
       "brand": "Runte Group",
       "stock": 35580,
       "photo": "http://lorempixel.com/640/480/sports",
-      "categories": ["Office"]
+      "categories": [
+        "Office"
+      ]
     },
     {
       "id": "c6b78a9b-8aec-4281-b83f-dfcd4972375d",
@@ -38,7 +52,9 @@
       "brand": "Dibbert - Conn",
       "stock": 64372,
       "photo": "http://lorempixel.com/640/480/nightlife",
-      "categories": ["Services"]
+      "categories": [
+        "Services"
+      ]
     },
     {
       "id": "179dc162-81a7-415b-a113-4aaa9fa01b00",
@@ -48,7 +64,10 @@
       "brand": "Emmerich - Windler",
       "stock": 57621,
       "photo": "http://lorempixel.com/640/480/transport",
-      "categories": ["Tech", "Services"]
+      "categories": [
+        "Tech",
+        "Services"
+      ]
     },
     {
       "id": "19e8852f-aadd-46b5-8cad-05dc41fa2dfa",
@@ -58,7 +77,10 @@
       "brand": "Kuhn and Sons",
       "stock": 64868,
       "photo": "http://lorempixel.com/640/480/cats",
-      "categories": ["Tech", "Office"]
+      "categories": [
+        "Tech",
+        "Office"
+      ]
     },
     {
       "id": "ab0cc933-2b95-4921-bef4-c99b8da882d9",
@@ -68,7 +90,10 @@
       "brand": "Halvorson, Kulas and Kihn",
       "stock": 24831,
       "photo": "http://lorempixel.com/640/480/city",
-      "categories": ["Tech", "Services"]
+      "categories": [
+        "Tech",
+        "Services"
+      ]
     },
     {
       "id": "a669a771-9b8d-4a98-8203-933c366fee7a",
@@ -78,7 +103,10 @@
       "brand": "Okuneva and Sons",
       "stock": 32855,
       "photo": "http://lorempixel.com/640/480/cats",
-      "categories": ["Tech", "Services"]
+      "categories": [
+        "Tech",
+        "Services"
+      ]
     },
     {
       "id": "c51fc833-fc30-45fe-86a3-fd4382d495af",
@@ -88,7 +116,9 @@
       "brand": "Johnson - Emard",
       "stock": 79402,
       "photo": "http://lorempixel.com/640/480/transport",
-      "categories": ["Office"]
+      "categories": [
+        "Office"
+      ]
     },
     {
       "id": "ff9f8d4d-dd49-42d7-a533-b9876c2a9156",
@@ -98,7 +128,10 @@
       "brand": "Goodwin, Wilderman and Dare",
       "stock": 67534,
       "photo": "http://lorempixel.com/640/480/fashion",
-      "categories": ["Tech", "Office"]
+      "categories": [
+        "Tech",
+        "Office"
+      ]
     }
   ]
 }

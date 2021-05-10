@@ -5,7 +5,7 @@ const getProducts = (param:string | null): ReducerAction => ({
     method: 'GET',
     entity: 'products',
     url: `${GENERAL_ROUTES.products}${
-      param ? `?categories_like=${param}` : ''
+      param ? `?category=${param}` : ''
     }`,
     onSuccess: (products: Product[]) => ({ entities: products })
   }
