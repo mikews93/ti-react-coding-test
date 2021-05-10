@@ -1,7 +1,7 @@
 {
-  "name": "mercado-libre-api",
+  "name": "team-international-api",
   "version": "1.0.0",
-  "description": "testing-code-mercadolibre",
+  "description": "testing-code-team-international",
   "main": "index.js",
   "author": "Miguel Blanco",
   "license": "MIT",
