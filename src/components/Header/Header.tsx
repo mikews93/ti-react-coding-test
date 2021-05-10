@@ -24,7 +24,7 @@ const Header: FunctionComponent<HeaderProps> = props => {
   const [activeTab, setActiveTab] = useState(
     props.activeTab ||
       getActiveTabUrl({
-        path: props.location.pathname,
+        path: props.location?.pathname,
         routes: { ...GENERAL_ROUTES, home: '/home' }
       })
   );
