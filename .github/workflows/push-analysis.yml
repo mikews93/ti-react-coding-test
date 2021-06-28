@@ -1,5 +1,9 @@
 name: Snyk Infrastructure
-on: push
+on: 
+  push:
+    branches: [ master ]
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
 jobs:
   security:
     runs-on: ubuntu-latest
